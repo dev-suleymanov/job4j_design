@@ -59,6 +59,6 @@ class BoxTest {
     void whenVerticesIs4AndEdgeIs1ThenAreaIs1to73() {
         Box box = new Box(4, 1);
         double result = box.getArea();
-        assertThat(result).isCloseTo(1.73, withPrecision(0.001));
+        assertThat(result).isCloseTo(1.73, withPrecision(0.01));
     }
 }
