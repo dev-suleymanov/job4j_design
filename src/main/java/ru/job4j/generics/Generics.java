@@ -19,14 +19,23 @@ public class Generics {
         generics.printObject(third);
         System.out.println();
 
-        //generics.printBoundedWildCard(first);
+
+        /**
+         * Так как метод printBoundedWildCard имеет ограничение сверху классом Predator,
+         * то в данном случает могут быть использованы объекты класса Predator и Tiger
+         * generics.printBoundedWildCard(first) - недопустимо;
+         */
         generics.printBoundedWildCard(second);
         generics.printBoundedWildCard(third);
         System.out.println();
 
         generics.printLowerBoundedWildCard(first);
         generics.printLowerBoundedWildCard(second);
-        //generics.printLowerBoundedWildCard(third);
+        /**
+         * Так как метод printLowerBoundedWildCard имеет ограничение снизу классом Predator,
+         * то в данном случает могут быть использованы объекты класса Animal и Predator
+         * generics.printLowerBoundedWildCard(third) - недопустимо;
+         */
     }
 
     public void printObject(List<?> list) {
