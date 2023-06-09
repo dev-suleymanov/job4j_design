@@ -26,6 +26,14 @@ class SimpleLinkedListTest {
         list.add(4);
         assertThat(list).hasSize(4);
     }
+    @Test
+    void checkIteratorSimpleEx() {
+        assertThat(list).hasSize(2);
+        list.add(10);
+        list.add(20);
+        list.add(30);
+        assertThat(list).hasSize(5);
+    }
 
     @Test
     void whenAddAndGet() {
@@ -35,6 +43,18 @@ class SimpleLinkedListTest {
         assertThat(list.get(1)).isEqualTo(2);
         assertThat(list.get(2)).isEqualTo(3);
         assertThat(list.get(3)).isEqualTo(4);
+    }
+
+    @Test
+    void whenAddAndGetEx() {
+        list.add(6);
+        list.add(10);
+        list.add(12);
+        assertThat(list.get(0)).isEqualTo(1);
+        assertThat(list.get(1)).isEqualTo(2);
+        assertThat(list.get(2)).isEqualTo(6);
+        assertThat(list.get(3)).isEqualTo(10);
+        assertThat(list.get(4)).isEqualTo(12);
     }
 
     @Test
