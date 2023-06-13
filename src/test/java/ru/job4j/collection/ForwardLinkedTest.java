@@ -144,4 +144,20 @@ class ForwardLinkedTest {
         assertThat(second.next()).isEqualTo(2);
         assertThat(second.hasNext()).isFalse();
     }
+
+    @Test
+    void checkAddFirstSize() {
+        list.addFirst(0);
+        assertThat(list).hasSize(3);
+    }
+
+    @Test
+    void checkAddFirstElement() {
+        list.add(3);
+        list.add(4);
+        list.addFirst(0);
+        assertThat(list.get(0)).isEqualTo(0);
+        list.addFirst(-1);
+        assertThat(list.get(0)).isEqualTo(-1);
+    }
 }
