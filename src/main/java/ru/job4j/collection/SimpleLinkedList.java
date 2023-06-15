@@ -20,9 +20,7 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
             while (last.next != null) {
                 last = last.next;
             }
-            Node<E> tail = last;
-            last = new Node<>(value, null);
-            tail.next = last;
+            last.next = new Node<>(value, null);
         }
         size++;
         modCount++;
@@ -31,11 +29,11 @@ public class SimpleLinkedList<E> implements LinkedList<E> {
     @Override
     public E get(int index) {
         Objects.checkIndex(index, size);
-        Node<E> current = head;
+        Node<E> element = head;
         for (int i = 0; i < index; i++) {
-            current = current.next;
+            element = element.next;
         }
-        return current.item;
+        return element.item;
     }
 
     @Override
