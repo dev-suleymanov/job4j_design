@@ -60,4 +60,11 @@ class ListUtilsTest {
         ListUtils.removeAll(input, List.of(1, 3));
         assertThat(input).isEmpty();
     }
+
+    @Test
+    void whenAddAfterEnd() {
+        List<Integer> input = new ArrayList<>(Arrays.asList(1, 3));
+        ListUtils.addAfter(input, 1, 4);
+        assertThat(input).hasSize(3).containsSequence(1, 3, 4);
+    }
 }
