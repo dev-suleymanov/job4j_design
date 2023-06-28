@@ -13,13 +13,30 @@ public class User {
         this.birthday = birthday;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        User user = (User) o;
+        return children == user.children && name.equals(user.name) && birthday.equals(user.birthday);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, children, birthday);
+    }
+
     public static void main(String[] args) {
         Map<User, Object> map = new HashMap<>(16);
         User us1 = new User("Rustam", 0, new GregorianCalendar(1995, 5, 21));
         int hashcode1 = us1.hashCode();
         int hash1 = hashcode1 ^ (hashcode1 >>> 16);
         int bucket1 = hash1 & 15;
-        User us2 = new User("Rauf", 0, new GregorianCalendar(1996, 11, 21));
+        User us2 = new User("Rustam", 0, new GregorianCalendar(1995, 5, 21));
         int hashcode2 = us2.hashCode();
         int hash2 = hashcode2 ^ (hashcode2 >>> 16);
         int bucket2 = hash2 & 15;
@@ -30,5 +47,7 @@ public class User {
         System.out.println();
         System.out.printf("user1 - hashcode: %s, hash: %s, bucket: %s",
                 hashcode2, hash2, bucket2);
+        System.out.println();
+        System.out.printf("size: %s", map.size());
     }
 }
