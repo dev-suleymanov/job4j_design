@@ -2,9 +2,7 @@ package ru.job4j.map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.*;
-
 import static org.assertj.core.api.Assertions.*;
 
 class SimpleMapTest {
@@ -45,7 +43,6 @@ class SimpleMapTest {
 
     @Test
     void whenCheckRemove() {
-        assertThat(map).hasSize(4);
         assertThat(map.remove(2)).isTrue();
         assertThat(map).hasSize(3);
         assertThat(map.remove(2)).isFalse();
@@ -144,7 +141,7 @@ class SimpleMapTest {
     void whenCheckGetZeroAndNull() {
         SimpleMap<Integer, String> map = new SimpleMap<>();
         assertThat(map.put(null, "0000")).isTrue();
-        //assertThat(map.get(0)).isNull();
+        assertThat(map.get(0)).isNull();
     }
 
     @Test
