@@ -16,11 +16,11 @@ public class SimpleMap<K, V> implements Map<K, V> {
 
     @Override
     public boolean put(K key, V value) {
-        if (capacity * LOAD_FACTOR == count) {
+        if (count == capacity * LOAD_FACTOR) {
             expand();
         }
         int index = getIndex(key);
-        boolean result = table[index] == null;
+        boolean result = Objects.isNull(table[index]);
         if (result) {
             table[index] = new MapEntry<>(key, value);
             count++;
@@ -29,47 +29,46 @@ public class SimpleMap<K, V> implements Map<K, V> {
         return result;
     }
 
-    private int hash(K key) {
-        int h = key.hashCode();
-        return key == null ? 0 : h ^ h >>> 16;
+    private int hash(int hashCode) {
+        return hashCode ^ (hashCode >>> 16);
     }
 
     private int indexFor(int hash) {
         return hash & (capacity - 1);
     }
 
-    private boolean equalsFor(K key, int index) {
-        return Objects.nonNull(table[index])
-                && Objects.hashCode(key) == Objects.hashCode(table[index].key)
-                && Objects.equals(key, table[index].key);
+    private int getIndex(K key) {
+        return indexFor(hash(Objects.hashCode(key)));
     }
 
-    private int getIndex(K key) {
-        return indexFor(hash(key));
-    }
     private void expand() {
         capacity *= 2;
         MapEntry<K, V>[] expandTable = new MapEntry[capacity];
-        for (MapEntry<K, V> entry: table) {
-            if (Objects.nonNull(entry)) {
-                expandTable[getIndex(entry.key)] = entry;
+        for (MapEntry<K, V> el : table) {
+            if (Objects.nonNull(el)) {
+                expandTable[getIndex(el.key)] = el;
             }
         }
         table = expandTable;
     }
 
+    private boolean equalsKey(K key) {
+        int index = getIndex(key);
+        return Objects.nonNull(table[index])
+                && Objects.hashCode(table[index].key) == Objects.hashCode(key)
+                && Objects.equals(table[index].key, key);
+    }
+
     @Override
     public V get(K key) {
-        int index = indexFor(hash(key));
-        return equalsFor(key, index) ? table[index].value : null;
+        return equalsKey(key) ? table[getIndex(key)].value : null;
     }
 
     @Override
     public boolean remove(K key) {
-        int index = getIndex(key);
-        boolean result = equalsFor(key, index);
+        boolean result = equalsKey(key);
         if (result) {
-            table[index] = null;
+            table[getIndex(key)] = null;
             count--;
             modCount++;
         }
