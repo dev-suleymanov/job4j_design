@@ -2,8 +2,6 @@ package ru.job4j.io;
 
 import java.io.*;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class LogFilter {
