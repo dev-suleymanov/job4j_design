@@ -35,11 +35,10 @@ public class Config {
     }
 
     public String value(String key) {
+        if (!values.containsKey(key)) {
+            throw new UnsupportedOperationException("Don't impl this method yet!");
+        }
         return values.get(key);
-    }
-
-    public Map<String, String> getMap() {
-        return values;
     }
 
     @Override
@@ -51,10 +50,5 @@ public class Config {
             e.printStackTrace();
         }
         return out.toString();
-    }
-
-    public static void main(String[] args) {
-        Config config = new Config("data/notvalid.properties");
-        config.load();
     }
 }
