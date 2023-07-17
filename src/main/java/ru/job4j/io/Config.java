@@ -27,7 +27,7 @@ public class Config {
                         if (key.isEmpty() || value.isEmpty()) {
                             throw new IllegalArgumentException("This config has an incorrect storage format key=value");
                         }
-                        values.put(temp[0], temp[1]);
+                        values.put(key, value);
                     });
         } catch (IOException e) {
             e.printStackTrace();
