@@ -10,8 +10,7 @@ public class Analysis {
             StringBuilder builder = new StringBuilder();
             boolean disabled = false;
             while ((line = reader.readLine()) != null) {
-                if (!disabled && (line.startsWith("400") || line.startsWith("500"))
-                        || disabled && (line.startsWith("200") || line.startsWith("300"))) {
+                if (disabled == (line.startsWith("200") || line.startsWith("300"))) {
                     disabled = !disabled;
                     builder.append(line.substring(4)).append(disabled ? ";" : System.lineSeparator());
                 }
