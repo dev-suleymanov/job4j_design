@@ -1,31 +1,22 @@
 package ru.job4j.io;
 
 import java.io.*;
-import java.util.Objects;
 
 public class Analysis {
     public void unavailable(String source, String target) {
-        String[] result = new String[2];
         try (BufferedReader reader = new BufferedReader(new FileReader(source));
              PrintWriter writer = new PrintWriter(new FileWriter(target))) {
             String line;
+            StringBuilder builder = new StringBuilder();
+            boolean disabled = false;
             while ((line = reader.readLine()) != null) {
-                String[] temp = line.split(" ");
-                String status = temp[0];
-                String date = temp[1];
-                if (Objects.equals(status, "400") || Objects.equals(status, "500")) {
-                    if (Objects.isNull(result[0])) {
-                        result[0] = date;
-                    }
-                } else {
-                    if (Objects.nonNull(result[0])) {
-                        result[1] = date;
-                        writer.println(String.format("%s;%s", result[0], result[1]));
-                        result[0] = null;
-                    }
+                if (!disabled && (line.startsWith("400") || line.startsWith("500"))
+                        || disabled && (line.startsWith("200") || line.startsWith("300"))) {
+                    disabled = !disabled;
+                    builder.append(line.substring(4)).append(disabled ? ";" : System.lineSeparator());
                 }
             }
-
+            writer.write(builder.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
