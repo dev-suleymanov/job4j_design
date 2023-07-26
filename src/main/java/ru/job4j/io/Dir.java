@@ -4,17 +4,9 @@ import java.io.File;
 
 public class Dir {
     public static void main(String[] args) {
-        File file = new File("c:\\projects");
-        if (!file.exists()) {
-            throw new IllegalArgumentException(String.format("Not exist %s", file.getAbsoluteFile()));
+        if (args.length == 0) {
+            throw new IllegalArgumentException("Root folder is null. Usage ROOT_FOLDER.");
         }
-        if (!file.isDirectory()) {
-            throw new IllegalArgumentException(String.format("Not directory %s", file.getAbsoluteFile()));
-        }
-        for (File subfile : file.listFiles()) {
-            if (subfile.isFile()) {
-                System.out.println(String.format("filename: %s, filesize:%s", subfile.getName(), subfile.length()));
-            }
-        }
+        File file = new File(args[0]);
     }
 }
