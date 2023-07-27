@@ -18,6 +18,12 @@ public class Search {
         if (args.length != 2) {
             throw new IllegalArgumentException("There should be two arguments");
         }
+        if (!Files.isDirectory(Paths.get(args[0]))) {
+            throw new IllegalArgumentException("Set the initial path");
+        }
+        if (!args[1].startsWith(".")) {
+            throw new IllegalArgumentException("The file extension must start with \".\"");
+        }
     }
     public static void main(String[] args) throws IOException {
         validate(args);
