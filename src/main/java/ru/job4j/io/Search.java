@@ -14,18 +14,13 @@ public class Search {
         return searchFiles.getPaths();
     }
 
-    public static void validate(String start, String extension) {
-        if (start.length() == 0) {
-            throw new IllegalArgumentException("The length start parameter don't be empty");
-        }
-        if (extension.length() == 0) {
-            throw new IllegalArgumentException("The length extension parameter don't be empty");
+    public static void validate(String[] args) {
+        if (args.length != 2) {
+            throw new IllegalArgumentException("There should be two arguments");
         }
     }
     public static void main(String[] args) throws IOException {
-        Path start = Paths.get(args[0]);
-        String extension = args[1];
-        validate(start.toString(), extension);
-        search(start, p -> p.toFile().getName().endsWith(extension)).forEach(System.out::println);
+        validate(args);
+        search(Paths.get(args[0]), p -> p.toFile().getName().endsWith(args[1])).forEach(System.out::println);
     }
 }
