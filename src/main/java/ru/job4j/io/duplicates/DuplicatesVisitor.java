@@ -8,14 +8,12 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
 
 public class DuplicatesVisitor extends SimpleFileVisitor<Path> {
-    Map<FileProperty, List<Path>> map = new HashMap<>();
+    private Map<FileProperty, List<Path>> map = new HashMap<>();
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
         FileProperty key = new FileProperty(file.toFile().length(), file.getFileName().toString());
-        if (!map.containsKey(key)) {
-            map.put(key, new ArrayList<>());
-        }
+        map.putIfAbsent(key, new ArrayList<>());
         map.get(key).add(file);
         return super.visitFile(file, attrs);
     }
