@@ -8,7 +8,6 @@ class ArgsNameTest {
 
     @Test
     void whenGetFirst() {
-        ;
         ArgsName jvm = ArgsName.of(new String[]{"-Xmx=512", "-encoding=UTF-8"});
         assertThat(jvm.get("Xmx")).isEqualTo("512");
     }
