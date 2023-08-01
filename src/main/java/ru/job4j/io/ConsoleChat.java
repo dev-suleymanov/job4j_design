@@ -20,6 +20,7 @@ public class ConsoleChat {
     public void run() {
         Scanner in = new Scanner(System.in);
         List<String> result = new ArrayList<>();
+        List<String> phrases = readPhrases();
         boolean disabled = false;
         boolean stop = false;
         while (!disabled) {
@@ -34,8 +35,8 @@ public class ConsoleChat {
                 stop = false;
             }
             if (!disabled && !stop) {
-                String temp = String.format("BOT: %s", readPhrases().
-                        get(new Random().nextInt(readPhrases().size())));
+                String temp = String.format("BOT: %s", phrases.
+                        get(new Random().nextInt(phrases.size())));
                 System.out.println(temp);
                 result.add(temp);
             }
