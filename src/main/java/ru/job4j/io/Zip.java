@@ -65,7 +65,7 @@ public class Zip {
         String output = argsName.get("o");
         Zip zip = new Zip();
         zip.validateArgs(directory, exclude, output);
-        zip.packFiles(search(Paths.get(directory), p -> p.endsWith(exclude)),
+        zip.packFiles(search(Paths.get(directory), p -> p.toString().endsWith(exclude)),
                 new File(String.format(String.format("%s/%s", directory, output))));
     }
 }
