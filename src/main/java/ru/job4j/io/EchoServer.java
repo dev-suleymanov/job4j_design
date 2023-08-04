@@ -14,16 +14,9 @@ public class EchoServer {
                      BufferedReader in = new BufferedReader(
                              new InputStreamReader(socket.getInputStream()))) {
                     out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-                    boolean enabled = true;
-                    for (String str = in.readLine(); str != null && !str.isEmpty(); str = in.readLine()) {
-                        if (str.contains("?msg")
-                                && Objects.equals(str.split(" ")[1].split("=")[1], "Bye")) {
-                            enabled = false;
-                            break;
-                        }
-                    }
                     out.flush();
-                    if (!enabled) {
+                    if (in.readLine().endsWith("Bye HTTP/1.1")) {
+                        System.out.println("This Server closed");
                         server.close();
                     }
                 }
