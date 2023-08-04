@@ -14,11 +14,11 @@ public class EchoServer {
                      BufferedReader in = new BufferedReader(
                              new InputStreamReader(socket.getInputStream()))) {
                     out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-                    out.flush();
-                    if (in.readLine().endsWith("Bye HTTP/1.1")) {
-                        System.out.println("This Server closed");
+                    if (in.readLine().contains("msg=Bye")) {
+                        System.out.println("This server closed");
                         server.close();
                     }
+                    out.flush();
                 }
             }
         }
