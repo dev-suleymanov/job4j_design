@@ -18,8 +18,8 @@ public class UsageLog4j {
         long card = 5536_9140_2700_1332L;
         short code = 479;
         System.out.println(card);
-        LOG.debug("User name:{}, age:{}, sex:{}, height:{}, " +
-                        "weight:{}, work:{}, number:{}, card:{}, code:{}",
+        LOG.debug("User name:{}, age:{}, sex:{}, height:{}, "
+                        + "weight:{}, work:{}, number:{}, card:{}, code:{}",
                 name, age, sex, height, weight, work, number, card, code);
     }
 }
