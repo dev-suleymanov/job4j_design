@@ -1,0 +1,13 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+<user name="Nebraska" status="true" time="2592000">
+    <resources>
+        <resource key="Lord of the rings" value="https://www.articles.com/lotr"/>
+        <resource key="Harry potter" value="https://www.articles.com/potter"/>
+        <resource key="Hobbit" value="https://www.articles.com/hobbit"/>
+    </resources>
+    <names>
+        <name>Maurice</name>
+        <name>Caesar</name>
+        <name>Nebraska</name>
+    </names>
+</user>
