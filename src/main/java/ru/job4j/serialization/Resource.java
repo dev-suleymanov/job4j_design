@@ -1,9 +1,15 @@
 package ru.job4j.serialization;
 
+import javax.xml.bind.annotation.*;
 import java.util.Map;
 
+@XmlRootElement(name = "resource")
 public class Resource {
-    private final Map<String, String> map;
+    @XmlElementWrapper(name = "elements")
+    private Map<String, String> map;
+
+    public Resource() {
+    }
 
     public Resource(Map<String, String> map) {
         this.map = map;

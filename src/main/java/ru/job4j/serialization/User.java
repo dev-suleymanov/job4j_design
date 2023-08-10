@@ -1,14 +1,23 @@
 package ru.job4j.serialization;
 
+import javax.xml.bind.annotation.*;
 import java.util.Arrays;
 
+@XmlRootElement(name = "user")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class User {
-    private final String name;
-    private final boolean status;
-    private final int time;
-    private final Resource resource;
-    private final String[] names;
+    @XmlAttribute
+    private String name;
+    @XmlAttribute
+    private boolean status;
+    @XmlAttribute
+    private int time;
+    private Resource resource;
+    @XmlElementWrapper(name = "names")
+    @XmlElement(name = "name")
+    private String[] names;
 
+    public User() { }
     public User(String name, boolean status, int time, Resource resource, String[] names) {
         this.name = name;
         this.status = status;
