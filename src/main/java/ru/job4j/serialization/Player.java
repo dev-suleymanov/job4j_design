@@ -17,6 +17,18 @@ public class Player {
         this.names = names;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public boolean isSteam() {
+        return steam;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
     @Override
     public String toString() {
         return "Player{"
