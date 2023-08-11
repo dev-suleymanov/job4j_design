@@ -29,6 +29,14 @@ public class Player {
         return time;
     }
 
+    public Rank getRank() {
+        return rank;
+    }
+
+    public String[] getNames() {
+        return names;
+    }
+
     @Override
     public String toString() {
         return "Player{"

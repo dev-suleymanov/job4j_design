@@ -5,6 +5,18 @@ public class Rank {
     private final int kills;
     private final int deaths;
 
+    public int getPoints() {
+        return points;
+    }
+
+    public int getKills() {
+        return kills;
+    }
+
+    public int getDeaths() {
+        return deaths;
+    }
+
     public Rank(int points, int kills, int deaths) {
         this.points = points;
         this.kills = kills;
