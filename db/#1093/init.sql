@@ -1,1 +1,0 @@
-create database items_db;
