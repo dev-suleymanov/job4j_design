@@ -7,6 +7,7 @@ insert into products (name, count, price) VALUES ('product_6', 6, 30);
 insert into products (name, count, price) VALUES ('product_7', 7, 35);
 insert into products (name, count, price) VALUES ('product_8', 8, 40);
 insert into products (name, count, price) VALUES ('product_9', 9, 45);
+
 insert into products (name, count, price) VALUES ('product_10', 10, 50);
 insert into products (name, count, price) VALUES ('product_11', 11, 55);
 insert into products (name, count, price) VALUES ('product_12', 12, 60);
