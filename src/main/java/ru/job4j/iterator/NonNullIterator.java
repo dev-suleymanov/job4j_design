@@ -3,8 +3,6 @@ package ru.job4j.iterator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.stream.IntStream;
 
 public class NonNullIterator implements Iterator<Integer> {
 
@@ -17,23 +15,16 @@ public class NonNullIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        boolean result = false;
-        for (int i = index; i < data.length; i++) {
-            if (Objects.nonNull(data[i])) {
-                result = true;
-                break;
-            }
+        while (index < data.length && Objects.isNull(data[index])) {
+            index++;
         }
-        return result;
+        return index < data.length;
     }
 
     @Override
     public Integer next() {
         if (!hasNext()) {
             throw new NoSuchElementException();
-        }
-        while (Objects.isNull(data[index])) {
-            index++;
         }
         return data[index++];
     }
