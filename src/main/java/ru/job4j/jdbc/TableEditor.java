@@ -89,7 +89,6 @@ public class TableEditor implements AutoCloseable {
 
     public static void main(String[] args) throws Exception {
         TableEditor tableEditor = new TableEditor(new Properties());
-        tableEditor.dropTable("stats");
         tableEditor.createTable("stats");
         tableEditor.addColumn("stats", "id", "serial primary key");
         tableEditor.addColumn("stats", "name", "varchar(32)");
@@ -97,5 +96,6 @@ public class TableEditor implements AutoCloseable {
         tableEditor.addColumn("stats", "time", "int");
         tableEditor.renameColumn("stats", "time", "last_time");
         tableEditor.dropColumn("stats", "last_time");
+        tableEditor.dropTable("stats");
     }
 }
