@@ -6,6 +6,9 @@ import java.util.Queue;
 import java.util.function.Predicate;
 
 public class SimpleTree<E> implements Tree<E> {
+    /*
+    hello
+     */
     private final Node<E> root;
 
     public SimpleTree(final E root) {
